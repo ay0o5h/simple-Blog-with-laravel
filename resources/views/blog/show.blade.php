@@ -26,7 +26,7 @@
                        <p class="text-capitalize text-secondary text-left">
                            {{  $post->description }}
                        </p>
-             
+
                </div>
            </div>
        </div>

@@ -4,10 +4,7 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 
-//Route::group(['namespace' => 'blog'],function () {
-//    Route::get('/', [])->name('admin.dashboard');
 
-    ######################### Begin Languages Route ########################
     Route::group(['prefix' => 'blog'], function () {
         Route::get('/', [PostsController::class,'index'])->name('blog.home');
         Route::get('create', [PostsController::class,'create'])->name('blog.create');
@@ -21,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 
     });
-//});
+
 
 Route::get('/', [PagesController::class, 'index'])->name('home');
 Route::resource('/blog',PostsController::class);
