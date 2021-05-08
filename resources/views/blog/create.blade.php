@@ -12,7 +12,7 @@
         </div>
     </div>
    <div class="pt-5 m-auto">
-       <form action="/blog" method="post" enctype="multipart/form-data">
+       <form action="{{route('blog.store')}}" method="post" enctype="multipart/form-data">
            @csrf
            <div class="container text-capitalize">
            <div class="row mb-3 " >

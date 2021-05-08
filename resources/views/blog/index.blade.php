@@ -10,18 +10,21 @@
 
             </h1>
             @if(Auth::check())
-                <a href="/blog/create"
+                <a href="{{route('blog.create')}}"
                    class="btn btn-info  text-center text-white text-capitalize px-4 mt-4  rounded-pill">
                     create a post
                 </a>
             @endif
+            @if(session()->has('message'))
+               <center>
+                   <div class="alert mt-4 alert-success w-50" role="alert">
+                       {{ session()->get('message')}}
+                   </div>
+               </center>
+            @endif
+
         </div>
     </div>
-    @if(session()->has('message'))
-        <div class="alert alert-success" role="alert">
-            {{ session()->get('message')}}
-        </div>
-    @endif
 
   @foreach($posts as $post)
       <div class="container">
@@ -39,16 +42,16 @@
                       by <span class="font-weight-bold ">{{$post->user->name}}</span> created on
                       {{date('jS M Y',strtotime($post->created_at))}}
                    </span>
-                  <p style="font-family: monospace" class="text-capitalize text-secondary text-lg-left">
+                  <p style="font-family: monospace; overflow: hidden" class="text-capitalize text-secondary w-100 text-lg-left">
                       {{  $post->description }}
                   </p>
-                  <a href="/blog/{{$post->slug}}"
+                  <a href="{{route('blog.show',$post->slug)}}"
                      class="btn btn-info  text-center text-white text-capitalize px-4   rounded-pill">
                       keep reading
                   </a>
                   @if(isset(Auth::user()->id) && Auth::user()->id == $post->user_id)
                       <span class="float-right">
-                          <a href="/blog/{{$post->slug}}/edit"
+                          <a href="{{route('blog.edit',$post->slug)}}"
                              style="position: absolute;bottom: 5%;right: 5%"
                              class="btn btn-light  shadow-lg border-light text-center text-dark text-capitalize px-4 rounded-pill">
                     edit
@@ -56,11 +59,10 @@
                       </span>
                       <span class="float-right">
                   @endif
-                  <form action="/blog/{{$post->slug}}"  method="post" >
-                  @csrf
-                  @method('delete' )
-                      <button  style="position: absolute;bottom: 5%;right: 20%" type="button" class=" px-4 rounded-pill shadow-sm btn btn-danger">Delete</button>
-                  </form>
+
+                      <a href="{{route('blog.delete',$post->slug)}}"  style="position: absolute;bottom: 5%;right: 20%" type="button"
+                         class=" px-4 rounded-pill shadow-sm btn btn-danger">Delete</a>
+
                       </span>
               </div>
 

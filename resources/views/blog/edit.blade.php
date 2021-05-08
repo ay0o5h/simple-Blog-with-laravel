@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="pt-5 m-auto">
-        <form action="/blog/{{$post->slug}}"  method="post" enctype="multipart/form-data">
+        <form action="{{route('blog.update',$post->slug)}}"  method="post" enctype="multipart/form-data">
             @csrf
             @method('Put' )
             <div class="container">
