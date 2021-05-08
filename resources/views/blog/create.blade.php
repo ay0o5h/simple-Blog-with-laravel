@@ -5,7 +5,7 @@
 
     <div class="m-auto text-left">
         <div class="py-5 ">
-            <h1 class="text-capitalize text-xl-center">
+            <h1 class="text-capitalize font-weight-bolder text-center" style="font-family: 'Times New Roman'">
                 create posts
 
             </h1>
@@ -14,12 +14,13 @@
    <div class="pt-5 m-auto">
        <form action="/blog" method="post" enctype="multipart/form-data">
            @csrf
-           <div class="container">
+           <div class="container text-capitalize">
            <div class="row mb-3 " >
                <div class="col-sm-3"></div>
                <div class="col-sm-6">
 
-             <input type="text" name="title" class="form-control text-dark shadow-sm border-0 btn-outline-light bg-light border-bottom"
+             <input type="text" name="title" class="form-control text-dark shadow-sm
+             border-0 border-outline-light bg-light  " style="height: 50px"
                     placeholder="title" id="title">
                    @error('title')
                    <div class="alert alert-danger" role="alert">
@@ -68,7 +69,8 @@
                    <div class="col-sm-6">
 
                        <button type="submit"
-                               class="btn text-capitalize btn-light p-2 w-100 shadow-lg">create post</button>
+                               class="btn text-capitalize  btn-light p-2 w-100 shadow-lg"
+                               style="font-family:monospace">create post</button>
 
                    </div>
                    <div class="col-sm-3"></div>
